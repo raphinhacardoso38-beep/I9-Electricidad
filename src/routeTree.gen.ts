@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ElectricidadRouteImport } from './routes/electricidad'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 
+const ElectricidadRoute = ElectricidadRouteImport.update({
+  id: '/electricidad',
+  path: '/electricidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,36 +37,47 @@ const ApiPublicLeadRoute = ApiPublicLeadRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/electricidad': typeof ElectricidadRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/electricidad': typeof ElectricidadRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/electricidad': typeof ElectricidadRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/chat' | '/api/public/lead'
+  fullPaths: '/' | '/electricidad' | '/api/chat' | '/api/public/lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/chat' | '/api/public/lead'
-  id: '__root__' | '/' | '/api/chat' | '/api/public/lead'
+  to: '/' | '/electricidad' | '/api/chat' | '/api/public/lead'
+  id: '__root__' | '/' | '/electricidad' | '/api/chat' | '/api/public/lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ElectricidadRoute: typeof ElectricidadRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiPublicLeadRoute: typeof ApiPublicLeadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/electricidad': {
+      id: '/electricidad'
+      path: '/electricidad'
+      fullPath: '/electricidad'
+      preLoaderRoute: typeof ElectricidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ElectricidadRoute: ElectricidadRoute,
   ApiChatRoute: ApiChatRoute,
   ApiPublicLeadRoute: ApiPublicLeadRoute,
 }
