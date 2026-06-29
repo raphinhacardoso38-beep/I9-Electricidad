@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UneteRouteImport } from './routes/unete'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PresupuestoRouteImport } from './routes/presupuesto'
 import { Route as ElectricidadRouteImport } from './routes/electricidad'
@@ -24,6 +25,11 @@ import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 const UneteRoute = UneteRouteImport.update({
   id: '/unete',
   path: '/unete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacidadRoute = PrivacidadRouteImport.update({
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -128,6 +137,7 @@ export interface FileRouteTypes {
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
+    | '/sitemap.xml'
     | '/unete'
     | '/api/chat'
     | '/api/public/lead'
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
+    | '/sitemap.xml'
     | '/unete'
     | '/api/chat'
     | '/api/public/lead'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
+    | '/sitemap.xml'
     | '/unete'
     | '/api/chat'
     | '/api/public/lead'
@@ -168,6 +180,7 @@ export interface RootRouteChildren {
   ElectricidadRoute: typeof ElectricidadRoute
   PresupuestoRoute: typeof PresupuestoRoute
   PrivacidadRoute: typeof PrivacidadRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UneteRoute: typeof UneteRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiPublicLeadRoute: typeof ApiPublicLeadRoute
@@ -180,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/unete'
       fullPath: '/unete'
       preLoaderRoute: typeof UneteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacidad': {
@@ -264,6 +284,7 @@ const rootRouteChildren: RootRouteChildren = {
   ElectricidadRoute: ElectricidadRoute,
   PresupuestoRoute: PresupuestoRoute,
   PrivacidadRoute: PrivacidadRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   UneteRoute: UneteRoute,
   ApiChatRoute: ApiChatRoute,
   ApiPublicLeadRoute: ApiPublicLeadRoute,
