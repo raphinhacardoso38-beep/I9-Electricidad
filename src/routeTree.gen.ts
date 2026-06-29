@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PresupuestoRouteImport } from './routes/presupuesto'
 import { Route as ElectricidadRouteImport } from './routes/electricidad'
 import { Route as AlbanileriaRouteImport } from './routes/albanileria'
 import { Route as AireAcondicionadoRouteImport } from './routes/aire-acondicionado'
@@ -16,6 +17,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 
+const PresupuestoRoute = PresupuestoRouteImport.update({
+  id: '/presupuesto',
+  path: '/presupuesto',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ElectricidadRoute = ElectricidadRouteImport.update({
   id: '/electricidad',
   path: '/electricidad',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
+  '/presupuesto': typeof PresupuestoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
+  '/presupuesto': typeof PresupuestoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
+  '/presupuesto': typeof PresupuestoRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/aire-acondicionado'
     | '/albanileria'
     | '/electricidad'
+    | '/presupuesto'
     | '/api/chat'
     | '/api/public/lead'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/aire-acondicionado'
     | '/albanileria'
     | '/electricidad'
+    | '/presupuesto'
     | '/api/chat'
     | '/api/public/lead'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/aire-acondicionado'
     | '/albanileria'
     | '/electricidad'
+    | '/presupuesto'
     | '/api/chat'
     | '/api/public/lead'
   fileRoutesById: FileRoutesById
@@ -104,12 +116,20 @@ export interface RootRouteChildren {
   AireAcondicionadoRoute: typeof AireAcondicionadoRoute
   AlbanileriaRoute: typeof AlbanileriaRoute
   ElectricidadRoute: typeof ElectricidadRoute
+  PresupuestoRoute: typeof PresupuestoRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiPublicLeadRoute: typeof ApiPublicLeadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/presupuesto': {
+      id: '/presupuesto'
+      path: '/presupuesto'
+      fullPath: '/presupuesto'
+      preLoaderRoute: typeof PresupuestoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/electricidad': {
       id: '/electricidad'
       path: '/electricidad'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AireAcondicionadoRoute: AireAcondicionadoRoute,
   AlbanileriaRoute: AlbanileriaRoute,
   ElectricidadRoute: ElectricidadRoute,
+  PresupuestoRoute: PresupuestoRoute,
   ApiChatRoute: ApiChatRoute,
   ApiPublicLeadRoute: ApiPublicLeadRoute,
 }
