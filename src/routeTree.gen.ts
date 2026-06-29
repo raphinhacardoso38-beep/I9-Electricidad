@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UneteRouteImport } from './routes/unete'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PresupuestoRouteImport } from './routes/presupuesto'
 import { Route as ElectricidadRouteImport } from './routes/electricidad'
 import { Route as AlbanileriaRouteImport } from './routes/albanileria'
@@ -21,6 +22,11 @@ import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 const UneteRoute = UneteRouteImport.update({
   id: '/unete',
   path: '/unete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PresupuestoRoute = PresupuestoRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
+  '/privacidad': typeof PrivacidadRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
+  '/privacidad': typeof PrivacidadRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
+  '/privacidad': typeof PrivacidadRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/albanileria'
     | '/electricidad'
     | '/presupuesto'
+    | '/privacidad'
     | '/unete'
     | '/api/chat'
     | '/api/public/lead'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/albanileria'
     | '/electricidad'
     | '/presupuesto'
+    | '/privacidad'
     | '/unete'
     | '/api/chat'
     | '/api/public/lead'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/albanileria'
     | '/electricidad'
     | '/presupuesto'
+    | '/privacidad'
     | '/unete'
     | '/api/chat'
     | '/api/public/lead'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   AlbanileriaRoute: typeof AlbanileriaRoute
   ElectricidadRoute: typeof ElectricidadRoute
   PresupuestoRoute: typeof PresupuestoRoute
+  PrivacidadRoute: typeof PrivacidadRoute
   UneteRoute: typeof UneteRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiPublicLeadRoute: typeof ApiPublicLeadRoute
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/unete'
       fullPath: '/unete'
       preLoaderRoute: typeof UneteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/presupuesto': {
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlbanileriaRoute: AlbanileriaRoute,
   ElectricidadRoute: ElectricidadRoute,
   PresupuestoRoute: PresupuestoRoute,
+  PrivacidadRoute: PrivacidadRoute,
   UneteRoute: UneteRoute,
   ApiChatRoute: ApiChatRoute,
   ApiPublicLeadRoute: ApiPublicLeadRoute,
