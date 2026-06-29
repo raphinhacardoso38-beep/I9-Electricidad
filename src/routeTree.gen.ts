@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UneteRouteImport } from './routes/unete'
 import { Route as PresupuestoRouteImport } from './routes/presupuesto'
 import { Route as ElectricidadRouteImport } from './routes/electricidad'
 import { Route as AlbanileriaRouteImport } from './routes/albanileria'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 
+const UneteRoute = UneteRouteImport.update({
+  id: '/unete',
+  path: '/unete',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PresupuestoRoute = PresupuestoRouteImport.update({
   id: '/presupuesto',
   path: '/presupuesto',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
+  '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
+  '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
+  '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/albanileria'
     | '/electricidad'
     | '/presupuesto'
+    | '/unete'
     | '/api/chat'
     | '/api/public/lead'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/albanileria'
     | '/electricidad'
     | '/presupuesto'
+    | '/unete'
     | '/api/chat'
     | '/api/public/lead'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/albanileria'
     | '/electricidad'
     | '/presupuesto'
+    | '/unete'
     | '/api/chat'
     | '/api/public/lead'
   fileRoutesById: FileRoutesById
@@ -117,12 +129,20 @@ export interface RootRouteChildren {
   AlbanileriaRoute: typeof AlbanileriaRoute
   ElectricidadRoute: typeof ElectricidadRoute
   PresupuestoRoute: typeof PresupuestoRoute
+  UneteRoute: typeof UneteRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiPublicLeadRoute: typeof ApiPublicLeadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unete': {
+      id: '/unete'
+      path: '/unete'
+      fullPath: '/unete'
+      preLoaderRoute: typeof UneteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/presupuesto': {
       id: '/presupuesto'
       path: '/presupuesto'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlbanileriaRoute: AlbanileriaRoute,
   ElectricidadRoute: ElectricidadRoute,
   PresupuestoRoute: PresupuestoRoute,
+  UneteRoute: UneteRoute,
   ApiChatRoute: ApiChatRoute,
   ApiPublicLeadRoute: ApiPublicLeadRoute,
 }
