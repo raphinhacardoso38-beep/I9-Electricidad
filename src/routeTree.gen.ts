@@ -13,6 +13,7 @@ import { Route as UneteRouteImport } from './routes/unete'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PresupuestoRouteImport } from './routes/presupuesto'
 import { Route as ElectricidadRouteImport } from './routes/electricidad'
+import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
 import { Route as AlbanileriaRouteImport } from './routes/albanileria'
 import { Route as AireAcondicionadoRouteImport } from './routes/aire-acondicionado'
 import { Route as IndexRouteImport } from './routes/index'
@@ -37,6 +38,11 @@ const PresupuestoRoute = PresupuestoRouteImport.update({
 const ElectricidadRoute = ElectricidadRouteImport.update({
   id: '/electricidad',
   path: '/electricidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AvisoLegalRoute = AvisoLegalRouteImport.update({
+  id: '/aviso-legal',
+  path: '/aviso-legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlbanileriaRoute = AlbanileriaRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/aire-acondicionado'
     | '/albanileria'
+    | '/aviso-legal'
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/aire-acondicionado'
     | '/albanileria'
+    | '/aviso-legal'
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/aire-acondicionado'
     | '/albanileria'
+    | '/aviso-legal'
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AireAcondicionadoRoute: typeof AireAcondicionadoRoute
   AlbanileriaRoute: typeof AlbanileriaRoute
+  AvisoLegalRoute: typeof AvisoLegalRoute
   ElectricidadRoute: typeof ElectricidadRoute
   PresupuestoRoute: typeof PresupuestoRoute
   PrivacidadRoute: typeof PrivacidadRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/electricidad'
       fullPath: '/electricidad'
       preLoaderRoute: typeof ElectricidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aviso-legal': {
+      id: '/aviso-legal'
+      path: '/aviso-legal'
+      fullPath: '/aviso-legal'
+      preLoaderRoute: typeof AvisoLegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/albanileria': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AireAcondicionadoRoute: AireAcondicionadoRoute,
   AlbanileriaRoute: AlbanileriaRoute,
+  AvisoLegalRoute: AvisoLegalRoute,
   ElectricidadRoute: ElectricidadRoute,
   PresupuestoRoute: PresupuestoRoute,
   PrivacidadRoute: PrivacidadRoute,
