@@ -13,6 +13,7 @@ import { Route as UneteRouteImport } from './routes/unete'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as PresupuestoRouteImport } from './routes/presupuesto'
 import { Route as ElectricidadRouteImport } from './routes/electricidad'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
 import { Route as AlbanileriaRouteImport } from './routes/albanileria'
 import { Route as AireAcondicionadoRouteImport } from './routes/aire-acondicionado'
@@ -38,6 +39,11 @@ const PresupuestoRoute = PresupuestoRouteImport.update({
 const ElectricidadRoute = ElectricidadRouteImport.update({
   id: '/electricidad',
   path: '/electricidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AvisoLegalRoute = AvisoLegalRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/cookies': typeof CookiesRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/cookies': typeof CookiesRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/aire-acondicionado': typeof AireAcondicionadoRoute
   '/albanileria': typeof AlbanileriaRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/cookies': typeof CookiesRoute
   '/electricidad': typeof ElectricidadRoute
   '/presupuesto': typeof PresupuestoRoute
   '/privacidad': typeof PrivacidadRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/aire-acondicionado'
     | '/albanileria'
     | '/aviso-legal'
+    | '/cookies'
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/aire-acondicionado'
     | '/albanileria'
     | '/aviso-legal'
+    | '/cookies'
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/aire-acondicionado'
     | '/albanileria'
     | '/aviso-legal'
+    | '/cookies'
     | '/electricidad'
     | '/presupuesto'
     | '/privacidad'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   AireAcondicionadoRoute: typeof AireAcondicionadoRoute
   AlbanileriaRoute: typeof AlbanileriaRoute
   AvisoLegalRoute: typeof AvisoLegalRoute
+  CookiesRoute: typeof CookiesRoute
   ElectricidadRoute: typeof ElectricidadRoute
   PresupuestoRoute: typeof PresupuestoRoute
   PrivacidadRoute: typeof PrivacidadRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/electricidad'
       fullPath: '/electricidad'
       preLoaderRoute: typeof ElectricidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/aviso-legal': {
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   AireAcondicionadoRoute: AireAcondicionadoRoute,
   AlbanileriaRoute: AlbanileriaRoute,
   AvisoLegalRoute: AvisoLegalRoute,
+  CookiesRoute: CookiesRoute,
   ElectricidadRoute: ElectricidadRoute,
   PresupuestoRoute: PresupuestoRoute,
   PrivacidadRoute: PrivacidadRoute,
