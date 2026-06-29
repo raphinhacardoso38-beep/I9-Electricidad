@@ -9,38 +9,248 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UneteRouteImport } from './routes/unete'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
+import { Route as PresupuestoRouteImport } from './routes/presupuesto'
+import { Route as ElectricidadRouteImport } from './routes/electricidad'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
+import { Route as AlbanileriaRouteImport } from './routes/albanileria'
+import { Route as AireAcondicionadoRouteImport } from './routes/aire-acondicionado'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 
+const UneteRoute = UneteRouteImport.update({
+  id: '/unete',
+  path: '/unete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PresupuestoRoute = PresupuestoRouteImport.update({
+  id: '/presupuesto',
+  path: '/presupuesto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ElectricidadRoute = ElectricidadRouteImport.update({
+  id: '/electricidad',
+  path: '/electricidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AvisoLegalRoute = AvisoLegalRouteImport.update({
+  id: '/aviso-legal',
+  path: '/aviso-legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlbanileriaRoute = AlbanileriaRouteImport.update({
+  id: '/albanileria',
+  path: '/albanileria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AireAcondicionadoRoute = AireAcondicionadoRouteImport.update({
+  id: '/aire-acondicionado',
+  path: '/aire-acondicionado',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicLeadRoute = ApiPublicLeadRouteImport.update({
+  id: '/api/public/lead',
+  path: '/api/public/lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aire-acondicionado': typeof AireAcondicionadoRoute
+  '/albanileria': typeof AlbanileriaRoute
+  '/aviso-legal': typeof AvisoLegalRoute
+  '/cookies': typeof CookiesRoute
+  '/electricidad': typeof ElectricidadRoute
+  '/presupuesto': typeof PresupuestoRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unete': typeof UneteRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aire-acondicionado': typeof AireAcondicionadoRoute
+  '/albanileria': typeof AlbanileriaRoute
+  '/aviso-legal': typeof AvisoLegalRoute
+  '/cookies': typeof CookiesRoute
+  '/electricidad': typeof ElectricidadRoute
+  '/presupuesto': typeof PresupuestoRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unete': typeof UneteRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aire-acondicionado': typeof AireAcondicionadoRoute
+  '/albanileria': typeof AlbanileriaRoute
+  '/aviso-legal': typeof AvisoLegalRoute
+  '/cookies': typeof CookiesRoute
+  '/electricidad': typeof ElectricidadRoute
+  '/presupuesto': typeof PresupuestoRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unete': typeof UneteRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/aire-acondicionado'
+    | '/albanileria'
+    | '/aviso-legal'
+    | '/cookies'
+    | '/electricidad'
+    | '/presupuesto'
+    | '/privacidad'
+    | '/sitemap.xml'
+    | '/unete'
+    | '/api/chat'
+    | '/api/public/lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/aire-acondicionado'
+    | '/albanileria'
+    | '/aviso-legal'
+    | '/cookies'
+    | '/electricidad'
+    | '/presupuesto'
+    | '/privacidad'
+    | '/sitemap.xml'
+    | '/unete'
+    | '/api/chat'
+    | '/api/public/lead'
+  id:
+    | '__root__'
+    | '/'
+    | '/aire-acondicionado'
+    | '/albanileria'
+    | '/aviso-legal'
+    | '/cookies'
+    | '/electricidad'
+    | '/presupuesto'
+    | '/privacidad'
+    | '/sitemap.xml'
+    | '/unete'
+    | '/api/chat'
+    | '/api/public/lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AireAcondicionadoRoute: typeof AireAcondicionadoRoute
+  AlbanileriaRoute: typeof AlbanileriaRoute
+  AvisoLegalRoute: typeof AvisoLegalRoute
+  CookiesRoute: typeof CookiesRoute
+  ElectricidadRoute: typeof ElectricidadRoute
+  PresupuestoRoute: typeof PresupuestoRoute
+  PrivacidadRoute: typeof PrivacidadRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  UneteRoute: typeof UneteRoute
+  ApiChatRoute: typeof ApiChatRoute
+  ApiPublicLeadRoute: typeof ApiPublicLeadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unete': {
+      id: '/unete'
+      path: '/unete'
+      fullPath: '/unete'
+      preLoaderRoute: typeof UneteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/presupuesto': {
+      id: '/presupuesto'
+      path: '/presupuesto'
+      fullPath: '/presupuesto'
+      preLoaderRoute: typeof PresupuestoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/electricidad': {
+      id: '/electricidad'
+      path: '/electricidad'
+      fullPath: '/electricidad'
+      preLoaderRoute: typeof ElectricidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aviso-legal': {
+      id: '/aviso-legal'
+      path: '/aviso-legal'
+      fullPath: '/aviso-legal'
+      preLoaderRoute: typeof AvisoLegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/albanileria': {
+      id: '/albanileria'
+      path: '/albanileria'
+      fullPath: '/albanileria'
+      preLoaderRoute: typeof AlbanileriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aire-acondicionado': {
+      id: '/aire-acondicionado'
+      path: '/aire-acondicionado'
+      fullPath: '/aire-acondicionado'
+      preLoaderRoute: typeof AireAcondicionadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +258,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/lead': {
+      id: '/api/public/lead'
+      path: '/api/public/lead'
+      fullPath: '/api/public/lead'
+      preLoaderRoute: typeof ApiPublicLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AireAcondicionadoRoute: AireAcondicionadoRoute,
+  AlbanileriaRoute: AlbanileriaRoute,
+  AvisoLegalRoute: AvisoLegalRoute,
+  CookiesRoute: CookiesRoute,
+  ElectricidadRoute: ElectricidadRoute,
+  PresupuestoRoute: PresupuestoRoute,
+  PrivacidadRoute: PrivacidadRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  UneteRoute: UneteRoute,
+  ApiChatRoute: ApiChatRoute,
+  ApiPublicLeadRoute: ApiPublicLeadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
