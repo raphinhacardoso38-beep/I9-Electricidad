@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ElectricidadRouteImport } from './routes/electricidad'
+import { Route as AlbanileriaRouteImport } from './routes/albanileria'
 import { Route as AireAcondicionadoRouteImport } from './routes/aire-acondicionado'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -18,6 +19,11 @@ import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 const ElectricidadRoute = ElectricidadRouteImport.update({
   id: '/electricidad',
   path: '/electricidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlbanileriaRoute = AlbanileriaRouteImport.update({
+  id: '/albanileria',
+  path: '/albanileria',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AireAcondicionadoRoute = AireAcondicionadoRouteImport.update({
@@ -44,6 +50,7 @@ const ApiPublicLeadRoute = ApiPublicLeadRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aire-acondicionado': typeof AireAcondicionadoRoute
+  '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aire-acondicionado': typeof AireAcondicionadoRoute
+  '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/aire-acondicionado': typeof AireAcondicionadoRoute
+  '/albanileria': typeof AlbanileriaRoute
   '/electricidad': typeof ElectricidadRoute
   '/api/chat': typeof ApiChatRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
@@ -68,6 +77,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/aire-acondicionado'
+    | '/albanileria'
     | '/electricidad'
     | '/api/chat'
     | '/api/public/lead'
@@ -75,6 +85,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/aire-acondicionado'
+    | '/albanileria'
     | '/electricidad'
     | '/api/chat'
     | '/api/public/lead'
@@ -82,6 +93,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/aire-acondicionado'
+    | '/albanileria'
     | '/electricidad'
     | '/api/chat'
     | '/api/public/lead'
@@ -90,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AireAcondicionadoRoute: typeof AireAcondicionadoRoute
+  AlbanileriaRoute: typeof AlbanileriaRoute
   ElectricidadRoute: typeof ElectricidadRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiPublicLeadRoute: typeof ApiPublicLeadRoute
@@ -102,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/electricidad'
       fullPath: '/electricidad'
       preLoaderRoute: typeof ElectricidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/albanileria': {
+      id: '/albanileria'
+      path: '/albanileria'
+      fullPath: '/albanileria'
+      preLoaderRoute: typeof AlbanileriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/aire-acondicionado': {
@@ -138,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AireAcondicionadoRoute: AireAcondicionadoRoute,
+  AlbanileriaRoute: AlbanileriaRoute,
   ElectricidadRoute: ElectricidadRoute,
   ApiChatRoute: ApiChatRoute,
   ApiPublicLeadRoute: ApiPublicLeadRoute,
