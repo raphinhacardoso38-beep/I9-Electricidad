@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, Zap } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 import { COMPANY, mailtoUrl, telUrl, whatsappUrl } from "@/lib/site-config";
+import logo from "@/assets/i9-logo.jpg.asset.json";
 
 const serviceLinks = [
   { label: "Inicio", to: "/" },
@@ -23,11 +24,11 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-secondary/50">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div className="lg:col-span-1">
-          <div className="flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground">
-              <Zap className="h-5 w-5" />
+          <div className="flex items-center gap-3">
+            <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-xl bg-foreground ring-1 ring-border">
+              <img src={logo.url} alt="I9 Electricidad" className="h-full w-full object-cover" />
             </span>
-            <span className="text-sm font-bold">{COMPANY.name}</span>
+            <span className="text-sm font-bold tracking-tight">{COMPANY.name}</span>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
             Servicios profesionales de electricidad, aire acondicionado y albañilería en{" "}

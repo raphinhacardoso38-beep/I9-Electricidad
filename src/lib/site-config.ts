@@ -1,11 +1,11 @@
 export const COMPANY = {
-  name: "Servicios Generales",
+  name: "I9 Electricidad",
   region: "Alicante y toda la Comunidad Valenciana",
   phone: "624 811 313",
   phoneRaw: "624811313",
   phoneIntl: "+34624811313",
   whatsapp: "34624811313",
-  email: "raphinhacardoso37@gmail.com",
+  email: "ra_damasceno@hotmail.com",
 } as const;
 
 export const NAV_LINKS = [

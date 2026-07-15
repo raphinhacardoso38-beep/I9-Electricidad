@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Phone, X, Zap } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { COMPANY, NAV_LINKS, telUrl } from "@/lib/site-config";
+import logo from "@/assets/i9-logo.jpg.asset.json";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -11,12 +12,12 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground shadow-glow">
-            <Zap className="h-5 w-5" />
+        <Link to="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
+          <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-foreground ring-1 ring-border shadow-glow">
+            <img src={logo.url} alt="I9 Electricidad" className="h-full w-full object-cover" />
           </span>
           <span className="min-w-0">
-            <span className="block truncate text-sm font-bold leading-tight text-foreground">
+            <span className="block truncate text-sm font-bold leading-tight tracking-tight text-foreground">
               {COMPANY.name}
             </span>
             <span className="block truncate text-[11px] leading-tight text-muted-foreground">

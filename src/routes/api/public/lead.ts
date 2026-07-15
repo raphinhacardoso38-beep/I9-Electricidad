@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const EMAIL = "raphinhacardoso37@gmail.com";
+const EMAIL = "ra_damasceno@hotmail.com";
 
 type Attachment = { filename: string; content: string }; // content = base64
 
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/api/public/lead")({
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              from: "Servicios Generales <onboarding@resend.dev>",
+              from: "I9 Electricidad <onboarding@resend.dev>",
               to: [EMAIL],
               reply_to: fields["Correo electrónico"] || undefined,
               subject,
