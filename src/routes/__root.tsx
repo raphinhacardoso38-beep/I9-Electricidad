@@ -81,14 +81,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "I9 Electricidad · Electricista y Técnico en Aire Acondicionado en Alicante" },
+      {
+        name: "description",
+        content:
+          "I9 Electricidad — electricista y técnico en aire acondicionado en Alicante y toda la Comunidad Valenciana. Instalaciones, reparaciones y albañilería con atención profesional.",
+      },
+      { name: "author", content: "I9 Electricidad" },
+      { property: "og:title", content: "I9 Electricidad · Alicante y Comunidad Valenciana" },
+      { property: "og:description", content: "Electricista, aire acondicionado y albañilería. Presupuesto sin compromiso." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
