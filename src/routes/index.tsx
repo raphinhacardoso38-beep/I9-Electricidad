@@ -114,10 +114,10 @@ function Home() {
               </Button>
             </div>
           </div>
-          <div className="group animate-rise-in overflow-hidden rounded-3xl shadow-card ring-1 ring-accent/20 [animation-delay:0.15s]">
+          <div className="group animate-tilt-in overflow-hidden rounded-3xl shadow-card ring-1 ring-accent/20 [animation-delay:0.15s]">
             <img
               src={heroImg}
-              alt="Servicios generales: electricidad, aire acondicionado y construcción"
+              alt="I9 Electricidad — Electricidad, Clima y Reformas en Alicante"
               width={1280}
               height={960}
               className="h-full w-full object-cover group-hover:scale-[1.04]"
