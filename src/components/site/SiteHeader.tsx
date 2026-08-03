@@ -12,8 +12,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-foreground ring-1 ring-border shadow-glow">
+        <Link to="/" className="group flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
+          <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-foreground ring-1 ring-accent/40 shadow-glow transition-transform duration-500 group-hover:scale-105">
             <img src={logo.url} alt="I9 Electricidad" className="h-full w-full object-cover" />
           </span>
           <span className="min-w-0">
@@ -32,8 +32,8 @@ export function SiteHeader() {
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              activeProps={{ className: "text-primary bg-secondary" }}
+              className="link-underline rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-primary" }}
             >
               {item.label}
             </Link>
