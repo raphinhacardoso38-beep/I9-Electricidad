@@ -5,7 +5,7 @@ export const COMPANY = {
   phoneRaw: "624811313",
   phoneIntl: "+34624811313",
   whatsapp: "34624811313",
-  email: "ra_damasceno@hotmail.com",
+  email: "i9electricidad@gmail.com",
 } as const;
 
 export const NAV_LINKS = [
