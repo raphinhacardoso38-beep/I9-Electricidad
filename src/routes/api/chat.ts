@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 type Msg = { role: "user" | "assistant" | "system"; content: string };
 
 const PHONE = "624 811 313";
-const EMAIL = "ra_damasceno@hotmail.com";
+const EMAIL = "i9electricidad@gmail.com";
 
 const SYSTEM_PROMPT = `Eres el asistente virtual de "I9 Electricidad", una empresa de servicios profesionales en Alicante y toda la Comunidad Valenciana (España), especializada en electricidad, aire acondicionado y albañilería.
 

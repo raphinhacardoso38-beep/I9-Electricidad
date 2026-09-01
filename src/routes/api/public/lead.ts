@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const EMAIL = "ra_damasceno@hotmail.com";
+const EMAIL = "i9electricidad@gmail.com";
 
 type Attachment = { filename: string; content: string }; // content = base64
 
