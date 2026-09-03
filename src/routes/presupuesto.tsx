@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2, Loader2, Mail, Phone } from "lucide-react";
+import { CheckCircle2, Mail, MessageCircle, Phone } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { COMPANY, mailtoUrl, telUrl } from "@/lib/site-config";
-import { fileToBase64, submitLead, type LeadAttachment } from "@/lib/leads";
+import { COMPANY, mailtoUrl, telUrl, whatsappUrl } from "@/lib/site-config";
+
 
 export const Route = createFileRoute("/presupuesto")({
   head: () => ({
@@ -29,11 +29,9 @@ export const Route = createFileRoute("/presupuesto")({
 const SERVICIOS = ["Electricidad", "Aire Acondicionado", "Albañilería", "Otro"];
 
 function Presupuesto() {
-  const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
-  const [files, setFiles] = useState<File[]>([]);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -52,30 +50,19 @@ function Presupuesto() {
       return;
     }
 
-    setLoading(true);
-    try {
-      const attachments: LeadAttachment[] = [];
-      for (const f of files.slice(0, 5)) {
-        if (f.size > 4 * 1024 * 1024) continue;
-        attachments.push({ filename: f.name, content: await fileToBase64(f) });
-      }
-      const res = await submitLead({
-        type: "presupuesto",
-        subject: `Presupuesto: ${fields["Tipo de servicio"]} - ${fields.Nombre}`,
-        fields,
-        attachments,
-      });
-      if (res.ok) {
-        setDone(true);
-        form.reset();
-        setFiles([]);
-      } else {
-        toast.error(res.message || "No se pudo enviar. Inténtalo de nuevo.");
-      }
-    } finally {
-      setLoading(false);
-    }
+    const text = [
+      "*Nueva solicitud de presupuesto*",
+      "",
+      ...Object.entries(fields)
+        .filter(([, v]) => v.trim() !== "")
+        .map(([k, v]) => `*${k}:* ${v}`),
+    ].join("\n");
+
+    window.open(whatsappUrl(text), "_blank", "noopener,noreferrer");
+    setDone(true);
+    form.reset();
   }
+
 
   if (done) {
     return (
@@ -83,10 +70,12 @@ function Presupuesto() {
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-success/15 text-success">
           <CheckCircle2 className="h-8 w-8" />
         </span>
-        <h1 className="mt-6 text-2xl font-bold">¡Solicitud enviada!</h1>
+        <h1 className="mt-6 text-2xl font-bold">¡Casi listo!</h1>
         <p className="mt-3 text-muted-foreground">
-          Gracias. Hemos recibido tu solicitud. Nos pondremos en contacto contigo lo antes posible.
+          Hemos abierto WhatsApp con tu solicitud. Pulsa enviar en la conversación y te
+          responderemos lo antes posible.
         </p>
+
         <Button className="mt-6" onClick={() => setDone(false)}>
           Enviar otra solicitud
         </Button>
@@ -148,24 +137,15 @@ function Presupuesto() {
             <Label htmlFor="descripcion">Descripción del trabajo</Label>
             <Textarea id="descripcion" name="descripcion" rows={4} placeholder="Cuéntanos qué necesitas..." />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="fotos">Adjuntar fotografías (opcional)</Label>
-            <Input
-              id="fotos"
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={(e) => setFiles(Array.from(e.target.files ?? []))}
-              className="cursor-pointer"
-            />
-            {files.length > 0 && (
-              <p className="text-xs text-muted-foreground">{files.length} archivo(s) seleccionado(s)</p>
-            )}
-          </div>
-          <Button type="submit" size="lg" className="w-full" disabled={loading}>
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-            {loading ? "Enviando..." : "Enviar Presupuesto"}
+          <p className="rounded-lg bg-accent/60 px-4 py-3 text-xs text-muted-foreground">
+            Al enviar se abrirá WhatsApp con tus datos ya escritos. Si quieres, puedes adjuntar
+            fotografías directamente en la conversación.
+          </p>
+          <Button type="submit" size="lg" className="w-full">
+            <MessageCircle className="h-4 w-4" />
+            Enviar por WhatsApp
           </Button>
+
         </form>
       </div>
     </div>

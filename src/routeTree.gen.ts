@@ -20,7 +20,6 @@ import { Route as AlbanileriaRouteImport } from './routes/albanileria'
 import { Route as AireAcondicionadoRouteImport } from './routes/aire-acondicionado'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
-import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 
 const UneteRoute = UneteRouteImport.update({
   id: '/unete',
@@ -77,11 +76,6 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicLeadRoute = ApiPublicLeadRouteImport.update({
-  id: '/api/public/lead',
-  path: '/api/public/lead',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -95,7 +89,6 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
-  '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -109,7 +102,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
-  '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -124,7 +116,6 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unete': typeof UneteRoute
   '/api/chat': typeof ApiChatRoute
-  '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -140,7 +131,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/unete'
     | '/api/chat'
-    | '/api/public/lead'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -154,7 +144,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/unete'
     | '/api/chat'
-    | '/api/public/lead'
   id:
     | '__root__'
     | '/'
@@ -168,7 +157,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/unete'
     | '/api/chat'
-    | '/api/public/lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -183,7 +171,6 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UneteRoute: typeof UneteRoute
   ApiChatRoute: typeof ApiChatRoute
-  ApiPublicLeadRoute: typeof ApiPublicLeadRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -265,13 +252,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/lead': {
-      id: '/api/public/lead'
-      path: '/api/public/lead'
-      fullPath: '/api/public/lead'
-      preLoaderRoute: typeof ApiPublicLeadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -287,7 +267,6 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UneteRoute: UneteRoute,
   ApiChatRoute: ApiChatRoute,
-  ApiPublicLeadRoute: ApiPublicLeadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
