@@ -15,7 +15,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="group flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
           <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-foreground ring-1 ring-accent/40 shadow-glow transition-transform duration-500 group-hover:scale-105">
-            <img src={logo.url} alt="I9 Electricidad" className="h-full w-full object-cover" />
+           <img src={logo} alt="I9 Electricidad" className="h-full w-full object-cover" />
           </span>
           <span className="min-w-0">
             <span className="block truncate text-sm font-bold leading-tight tracking-tight text-foreground">
