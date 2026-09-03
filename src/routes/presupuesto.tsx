@@ -29,11 +29,9 @@ export const Route = createFileRoute("/presupuesto")({
 const SERVICIOS = ["Electricidad", "Aire Acondicionado", "Albañilería", "Otro"];
 
 function Presupuesto() {
-  const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
-  const [files, setFiles] = useState<File[]>([]);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -52,30 +50,19 @@ function Presupuesto() {
       return;
     }
 
-    setLoading(true);
-    try {
-      const attachments: LeadAttachment[] = [];
-      for (const f of files.slice(0, 5)) {
-        if (f.size > 4 * 1024 * 1024) continue;
-        attachments.push({ filename: f.name, content: await fileToBase64(f) });
-      }
-      const res = await submitLead({
-        type: "presupuesto",
-        subject: `Presupuesto: ${fields["Tipo de servicio"]} - ${fields.Nombre}`,
-        fields,
-        attachments,
-      });
-      if (res.ok) {
-        setDone(true);
-        form.reset();
-        setFiles([]);
-      } else {
-        toast.error(res.message || "No se pudo enviar. Inténtalo de nuevo.");
-      }
-    } finally {
-      setLoading(false);
-    }
+    const text = [
+      "*Nueva solicitud de presupuesto*",
+      "",
+      ...Object.entries(fields)
+        .filter(([, v]) => v.trim() !== "")
+        .map(([k, v]) => `*${k}:* ${v}`),
+    ].join("\n");
+
+    window.open(whatsappUrl(text), "_blank", "noopener,noreferrer");
+    setDone(true);
+    form.reset();
   }
+
 
   if (done) {
     return (
