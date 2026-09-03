@@ -70,10 +70,12 @@ function Presupuesto() {
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-success/15 text-success">
           <CheckCircle2 className="h-8 w-8" />
         </span>
-        <h1 className="mt-6 text-2xl font-bold">¡Solicitud enviada!</h1>
+        <h1 className="mt-6 text-2xl font-bold">¡Casi listo!</h1>
         <p className="mt-3 text-muted-foreground">
-          Gracias. Hemos recibido tu solicitud. Nos pondremos en contacto contigo lo antes posible.
+          Hemos abierto WhatsApp con tu solicitud. Pulsa enviar en la conversación y te
+          responderemos lo antes posible.
         </p>
+
         <Button className="mt-6" onClick={() => setDone(false)}>
           Enviar otra solicitud
         </Button>
