@@ -4,7 +4,8 @@ import { Menu, Phone, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { COMPANY, NAV_LINKS, telUrl } from "@/lib/site-config";
-import logo from "@/assets/i9-logo.jpg.asset.json";
+const logo = "/WhatsApp Image 2026-08-03 at 10.48.23.jpeg";
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
