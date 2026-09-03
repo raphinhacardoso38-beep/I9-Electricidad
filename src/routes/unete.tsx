@@ -29,11 +29,9 @@ export const Route = createFileRoute("/unete")({
 const ESPECIALIDADES = ["Electricidad", "Aire Acondicionado", "Albañilería", "Otro"];
 
 function Unete() {
-  const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
-  const [cv, setCv] = useState<File | null>(null);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -51,28 +49,17 @@ function Unete() {
       return;
     }
 
-    setLoading(true);
-    try {
-      const attachments: LeadAttachment[] = [];
-      if (cv && cv.size <= 5 * 1024 * 1024) {
-        attachments.push({ filename: cv.name, content: await fileToBase64(cv) });
-      }
-      const res = await submitLead({
-        type: "empleo",
-        subject: `Empleo: ${fields.Especialidad} - ${fields["Nombre completo"]}`,
-        fields,
-        attachments,
-      });
-      if (res.ok) {
-        setDone(true);
-        form.reset();
-        setCv(null);
-      } else {
-        toast.error(res.message || "No se pudo enviar. Inténtalo de nuevo.");
-      }
-    } finally {
-      setLoading(false);
-    }
+    const text = [
+      "*Nueva solicitud de empleo*",
+      "",
+      ...Object.entries(fields)
+        .filter(([, v]) => v.trim() !== "")
+        .map(([k, v]) => `*${k}:* ${v}`),
+    ].join("\n");
+
+    window.open(whatsappUrl(text), "_blank", "noopener,noreferrer");
+    setDone(true);
+    form.reset();
   }
 
   if (done) {
@@ -81,11 +68,12 @@ function Unete() {
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-success/15 text-success">
           <CheckCircle2 className="h-8 w-8" />
         </span>
-        <h1 className="mt-6 text-2xl font-bold">¡Solicitud recibida!</h1>
+        <h1 className="mt-6 text-2xl font-bold">¡Casi listo!</h1>
         <p className="mt-3 text-muted-foreground">
-          Gracias por tu interés. Revisaremos tu solicitud y contactaremos contigo si tu perfil se
-          ajusta a nuestras necesidades.
+          Hemos abierto WhatsApp con tu solicitud. Pulsa enviar en la conversación y, si quieres,
+          adjunta tu CV allí mismo.
         </p>
+
         <Button className="mt-6" onClick={() => setDone(false)}>
           Enviar otra solicitud
         </Button>
