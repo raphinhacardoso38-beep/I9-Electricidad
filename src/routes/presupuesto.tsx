@@ -135,24 +135,15 @@ function Presupuesto() {
             <Label htmlFor="descripcion">Descripción del trabajo</Label>
             <Textarea id="descripcion" name="descripcion" rows={4} placeholder="Cuéntanos qué necesitas..." />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="fotos">Adjuntar fotografías (opcional)</Label>
-            <Input
-              id="fotos"
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={(e) => setFiles(Array.from(e.target.files ?? []))}
-              className="cursor-pointer"
-            />
-            {files.length > 0 && (
-              <p className="text-xs text-muted-foreground">{files.length} archivo(s) seleccionado(s)</p>
-            )}
-          </div>
-          <Button type="submit" size="lg" className="w-full" disabled={loading}>
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-            {loading ? "Enviando..." : "Enviar Presupuesto"}
+          <p className="rounded-lg bg-accent/60 px-4 py-3 text-xs text-muted-foreground">
+            Al enviar se abrirá WhatsApp con tus datos ya escritos. Si quieres, puedes adjuntar
+            fotografías directamente en la conversación.
+          </p>
+          <Button type="submit" size="lg" className="w-full">
+            <MessageCircle className="h-4 w-4" />
+            Enviar por WhatsApp
           </Button>
+
         </form>
       </div>
     </div>
