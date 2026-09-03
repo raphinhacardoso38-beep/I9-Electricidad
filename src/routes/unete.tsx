@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { fileToBase64, submitLead, type LeadAttachment } from "@/lib/leads";
+import { whatsappUrl } from "@/lib/site-config";
+
 
 export const Route = createFileRoute("/unete")({
   head: () => ({
