@@ -132,21 +132,15 @@ function Unete() {
               placeholder="Cuéntanos sobre tu experiencia..."
             />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="cv">Adjuntar CV (PDF o DOC)</Label>
-            <Input
-              id="cv"
-              type="file"
-              accept=".pdf,.doc,.docx"
-              onChange={(e) => setCv(e.target.files?.[0] ?? null)}
-              className="cursor-pointer"
-            />
-            {cv && <p className="text-xs text-muted-foreground">{cv.name}</p>}
-          </div>
-          <Button type="submit" size="lg" className="w-full" disabled={loading}>
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-            {loading ? "Enviando..." : "Enviar Solicitud"}
+          <p className="rounded-lg bg-accent/60 px-4 py-3 text-xs text-muted-foreground">
+            Al enviar se abrirá WhatsApp con tus datos ya escritos. Puedes adjuntar tu CV
+            directamente en la conversación.
+          </p>
+          <Button type="submit" size="lg" className="w-full">
+            <MessageCircle className="h-4 w-4" />
+            Enviar por WhatsApp
           </Button>
+
         </form>
       </div>
     </div>
